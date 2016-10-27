@@ -49,6 +49,7 @@ class AudioViewController: UIViewController {
       print("Failed to set audio session category.  Error: \(error)")
     }
     
+    //如果这个APP在前台,这个观察者每一秒的1/100就会被调用一次并且更新UI
     player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 100), queue: DispatchQueue.main) {
       [weak self] time in
       guard let strongSelf = self else { return }
